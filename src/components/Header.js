@@ -10,6 +10,6 @@ const Header = () => {
       <NavLink to='/edit'>Edit Expense</NavLink>
     </header>
   );
-}
+};
 
 export default Header;

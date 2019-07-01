@@ -6,6 +6,6 @@ function App() {
       Welcome
     </div>
   );
-}
+};
 
 export default App;

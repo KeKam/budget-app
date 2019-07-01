@@ -23,6 +23,6 @@ const expensesReducer = (state = expensesReucerDefaultState, action) => {
     default:
       return state;
   }
-}
+};
 
 export default expensesReducer;
