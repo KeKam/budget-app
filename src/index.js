@@ -10,8 +10,8 @@ import * as serviceWorker from './serviceWorker';
 
 const store = configureStore();
 
-store.dispatch(addExpense({ description: 'New laptop' }));
-store.dispatch(addExpense({ description: 'New shoes' }));
+store.dispatch(addExpense({ description: 'New laptop', amount: 5500 }));
+store.dispatch(addExpense({ description: 'New shoes', amount: 4000 }));
 store.dispatch(setTextFilter('la'));
 
 const state = store.getState();
