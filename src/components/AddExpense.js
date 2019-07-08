@@ -1,9 +1,10 @@
 import React from 'react';
+import ExpenseForm from './ExpenseForm';
 
 const AddExpense = () => {
   return (
     <div>
-      This is the AddExpense component
+      <ExpenseForm />
     </div>
   );
 };
