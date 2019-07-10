@@ -4,12 +4,13 @@ import { SingleDatePicker } from 'react-dates';
 import 'react-dates/initialize';
 import 'react-dates/lib/css/_datepicker.css';
 
-const ExpenseForm = () => {
+const ExpenseForm = ({ onSubmit }) => {
   const [ description, setDescription ] = useState('');
   const [ note, setNote ] = useState('');
   const [ amount, setAmount ] = useState('');
   const [ createdAt, setCreatedAt ] = useState(moment());
   const [ focused, setFocused ] = useState(false);
+  const [ error, setError ] = useState('');
 
   const onDescriptionChange = (e) => {
     const description = e.target.value;
@@ -38,9 +39,26 @@ const ExpenseForm = () => {
     setFocused(focused);
   };
 
+  const onFormSubmit = (e) => {
+    e.preventDefault();
+
+    if (!description || !amount) {
+      setError('Please provide description and amount');
+    } else {
+      setError('');
+      onSubmit({
+        description,
+        amount: parseFloat(amount, 10) * 100,
+        createdAt: createdAt.valueOf(),
+        note
+      });
+    }
+  };
+
   return (
     <div>
-      <form>
+      {error && <p>{error}</p>}
+      <form onSubmit={onFormSubmit}>
         <input 
           type='text' 
           placeholder='Description'
