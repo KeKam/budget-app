@@ -3,12 +3,13 @@ import { connect } from 'react-redux';
 import ExpenseForm from './ExpenseForm';
 import { addExpense } from '../actions/expenses';
 
-const AddExpense = ({ dispatch }) => {
+const AddExpense = ({ dispatch, history }) => {
   return (
     <div>
       <ExpenseForm 
         onSubmit={(expense) => {
           dispatch(addExpense(expense));
+          history.push('/');
         }}   
       />
     </div>
