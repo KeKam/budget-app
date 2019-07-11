@@ -4,11 +4,11 @@ import { SingleDatePicker } from 'react-dates';
 import 'react-dates/initialize';
 import 'react-dates/lib/css/_datepicker.css';
 
-const ExpenseForm = ({ onSubmit }) => {
-  const [ description, setDescription ] = useState('');
-  const [ note, setNote ] = useState('');
-  const [ amount, setAmount ] = useState('');
-  const [ createdAt, setCreatedAt ] = useState(moment());
+const ExpenseForm = ({ onSubmit, expense }) => {
+  const [ description, setDescription ] = useState(expense ? expense.description : '');
+  const [ note, setNote ] = useState(expense ? expense.note : '');
+  const [ amount, setAmount ] = useState(expense ? (expense.amount / 100).toString() : '');
+  const [ createdAt, setCreatedAt ] = useState(expense ? moment(expense.createdAt) : moment());
   const [ focused, setFocused ] = useState(false);
   const [ error, setError ] = useState('');
 
