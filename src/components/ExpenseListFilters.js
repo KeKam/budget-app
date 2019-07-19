@@ -35,7 +35,9 @@ const ExpenseListFilters = ({ filters, dispatch }) => {
       </select>
       <DateRangePicker 
         startDate={filters.startDate}
+        startDateId='start'
         endDate={filters.endDate}
+        endDateId='end'
         onDatesChange={onDatesChange}
         focusedInput={focused}
         onFocusChange={onFocusChange}
