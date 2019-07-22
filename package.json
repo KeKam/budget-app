@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "moment": "^2.24.0",
+    "numeral": "^2.0.6",
     "react": "^16.8.6",
     "react-dates": "^20.2.5",
     "react-dom": "^16.8.6",
