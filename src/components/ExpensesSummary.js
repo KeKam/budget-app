@@ -20,7 +20,7 @@ const mapStateToProps = ({ expenses, filters }) => {
   return {
     expenseCount: visibleExpenses.length,
     expensesTotal: totalExpenses(visibleExpenses)
-  }
+  };
 };
 
 export default connect(mapStateToProps)(ExpensesSummary);
