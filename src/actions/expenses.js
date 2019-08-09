@@ -36,3 +36,26 @@ export const editExpense = (id, updates) => ({
   id,
   updates
 });
+
+export const setExpenses = (expenses) => ({
+  type: 'SET_EXPENSES',
+  expenses
+});
+
+export const startSetExpenses = () => {
+  return async (dispatch) => {
+    try {
+      const response = await database.ref('expenses').once('value');
+      const expenses = [];
+      response.forEach((expense) => {
+        expenses.push({
+          id: expense.key,
+          ...expense.val()
+        });
+      });
+      dispatch(setExpenses(expenses));
+    } catch (error) {
+      console.log('Failed to get expenses from database', error);
+    }
+  };
+};
