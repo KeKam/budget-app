@@ -1,16 +1,16 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import ExpenseForm from './ExpenseForm';
-import { editExpense, removeExpense } from '../actions/expenses';
+import { editExpense, startRemoveExpense } from '../actions/expenses';
 
-const EditExpense = ({ expenseMatch, history, editExpense, removeExpense }) => {
+const EditExpense = ({ expenseMatch, history, editExpense, startRemoveExpense }) => {
   const onSubmit = (expense) => {
     editExpense(expenseMatch.id, expense);
     history.push('/');
   };
 
   const onRemove = () => {
-    removeExpense({ id: expenseMatch.id });
+    startRemoveExpense({ id: expenseMatch.id });
     history.push('/');
   };
   
@@ -42,8 +42,8 @@ const mapDispatchToProps = (dispatch) => {
     editExpense: (id, expense) => {
       return dispatch(editExpense(id, expense));
     },
-    removeExpense: (id) => {
-      return dispatch(removeExpense(id));
+    startRemoveExpense: (id) => {
+      return dispatch(startRemoveExpense(id));
     }
   };
 };
