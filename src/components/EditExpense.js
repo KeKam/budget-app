@@ -1,11 +1,11 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import ExpenseForm from './ExpenseForm';
-import { editExpense, startRemoveExpense } from '../actions/expenses';
+import { startEditExpense, startRemoveExpense } from '../actions/expenses';
 
-const EditExpense = ({ expenseMatch, history, editExpense, startRemoveExpense }) => {
+const EditExpense = ({ expenseMatch, history, startEditExpense, startRemoveExpense }) => {
   const onSubmit = (expense) => {
-    editExpense(expenseMatch.id, expense);
+    startEditExpense(expenseMatch.id, expense);
     history.push('/');
   };
 
@@ -39,8 +39,8 @@ const mapStateToProps = ({ expenses }, { match }) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    editExpense: (id, expense) => {
-      return dispatch(editExpense(id, expense));
+    startEditExpense: (id, expense) => {
+      return dispatch(startEditExpense(id, expense));
     },
     startRemoveExpense: (id) => {
       return dispatch(startRemoveExpense(id));
