@@ -33,8 +33,12 @@ export const removeExpense = ({ id }) =>({
 
 export const startRemoveExpense = ({ id } = {}) => {
   return async (dispatch) => {
-    await database.ref(`expenses/${id}`).remove();
-    dispatch(removeExpense({ id }));
+    try {
+      await database.ref(`expenses/${id}`).remove();
+      dispatch(removeExpense({ id }));
+    } catch (error) {
+      console.log('Failed to remove expense', error);
+    }
   };
 };
 
