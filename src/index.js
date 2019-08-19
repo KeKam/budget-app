@@ -4,6 +4,7 @@ import { Provider } from 'react-redux';
 import AppRouter, { history } from './routers/AppRouter';
 import configureStore from './store/configureStore';
 import { startSetExpenses } from './actions/expenses';
+import { login, logout } from './actions/auth';
 import * as serviceWorker from './serviceWorker';
 import { firebase } from './firebase/firebase';
 
@@ -29,6 +30,7 @@ ReactDOM.render(<p>Loading...</p>, document.getElementById('root'));
 firebase.auth().onAuthStateChanged(async (user) => {
   if (user) {
     try {
+      store.dispatch(login(user.uid));
       await store.dispatch(startSetExpenses());
       renderApp();
       if (history.location.pathname === '/') {
@@ -38,6 +40,7 @@ firebase.auth().onAuthStateChanged(async (user) => {
       console.log('Failed to log in', error);
     }
   } else {
+    store.dispatch(logout());
     renderApp();
     history.push('/');
   }
