@@ -7,7 +7,7 @@ const Header = ({ startLogout }) => {
   return (
     <header>
       <h1>Budget App</h1>
-      <NavLink to='/' exact={true}>Dashboard</NavLink>
+      <NavLink to='/dashboard'>Dashboard</NavLink>
       <NavLink to='/create'>Add Expense</NavLink>
       <button onClick={startLogout}>Logout</button>
     </header>
