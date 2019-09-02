@@ -27,6 +27,16 @@ const HeaderTitle = styled.h1`
   margin: 0;
 `;
 
+const LogoutButton = styled.button`
+  background: none;
+  color: white;
+  border: none;
+  font-size: 1.2rem;
+  font-weight: 300;
+  padding: 0.5rem;
+  cursor: pointer;
+`; 
+
 const Header = ({ startLogout }) => {
   return (
     <StyledHeader>
@@ -35,7 +45,7 @@ const Header = ({ startLogout }) => {
           <HeaderLink to='/dashboard'>
             <HeaderTitle>Budgetify</HeaderTitle>
           </HeaderLink>
-          <button onClick={startLogout}>Logout</button>
+          <LogoutButton onClick={startLogout}>Logout</LogoutButton>
         </HeaderContent>
       </ContentContainer>
     </StyledHeader>
