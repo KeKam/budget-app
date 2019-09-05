@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { DateRangePicker } from 'react-dates';
 import styled from 'styled-components';
 import { setTextFilter, sortByDate, sortByAmount, setStartDate, setEndDate } from '../actions/filters';
-import { ContentContainer, TextInput } from '../styles/styles';
+import { ContentContainer } from './Header';
 
 const ListFilters = styled.div`
   display: flex;
@@ -22,6 +22,14 @@ const Filter = styled.div`
   @media (min-width: 45rem) {
     margin: 0 1.2rem 0 0
   }
+`;
+
+export const TextInput = styled.input`
+  border: 1px solid #cacccd;
+  height: 50px;
+  font-size: 1.8rem;
+  font-weight: 300;
+  padding: 1.2rem;
 `;
 
 const Select = styled(TextInput.withComponent('select'))`

@@ -5,7 +5,7 @@ import numeral from 'numeral';
 import styled from 'styled-components';
 import getVisibleExpenses from '../selector/expenses';
 import totalExpenses from '../selector/expenses-total';
-import { ContentContainer } from '../styles/styles';
+import { ContentContainer } from './Header';
 
 const SummaryArea = styled.div`
   background: #f5f5f5;

@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
 import { startLogout } from '../actions/auth';
-import { ContentContainer } from '../styles/styles';
 
 const StyledHeader = styled.header`
   background: #364051;
@@ -36,6 +35,12 @@ const LogoutButton = styled.button`
   padding: 0.5rem;
   cursor: pointer;
 `; 
+
+export const ContentContainer = styled.div`
+  margin: 0 auto;
+  padding: 0 1.6rem;
+  max-width: 80rem;
+`;
 
 const Header = ({ startLogout }) => {
   return (
