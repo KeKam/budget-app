@@ -1,7 +1,32 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { DateRangePicker } from 'react-dates';
+import styled from 'styled-components';
 import { setTextFilter, sortByDate, sortByAmount, setStartDate, setEndDate } from '../actions/filters';
+import { ContentContainer, TextInput } from '../styles/styles';
+
+const ListFilters = styled.div`
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1.6rem;
+  
+  @media (min-width: 45rem) {
+    flex-direction: row;
+    margin-bottom: 3.2rem;
+  }
+`;
+
+const Filter = styled.div`
+  margin-bottom: 1.2rem;
+  
+  @media (min-width: 45rem) {
+    margin: 0 1.2rem 0 0
+  }
+`;
+
+const Select = styled(TextInput.withComponent('select'))`
+  padding: 0 1.2rem;
+`;
 
 const ExpenseListFilters = ({ filters, setStartDate, setEndDate, setTextFilter, sortByDate, sortByAmount }) => {
   const [ focused, setFocused ] = useState(null);
@@ -28,28 +53,36 @@ const ExpenseListFilters = ({ filters, setStartDate, setEndDate, setTextFilter, 
   };
 
   return (
-    <div>
-      <input type='text' value={filters.text} onChange={onInputChange} />
-      <select
-        value={filters.sortBy}
-        onChange={onSortChange}
-      >
-        <option value='date'>Date</option>
-        <option value='amount'>Amount</option>
-      </select>
-      <DateRangePicker 
-        startDate={filters.startDate}
-        startDateId='start'
-        endDate={filters.endDate}
-        endDateId='end'
-        onDatesChange={onDatesChange}
-        focusedInput={focused}
-        onFocusChange={onFocusChange}
-        showClearDates={true}
-        numberOfMonths={1}
-        isOutsideRange={() => false}
-      />
-    </div>
+    <ContentContainer>
+      <ListFilters>
+        <Filter>
+          <TextInput type='text' placeholder='Search expenses' value={filters.text} onChange={onInputChange} />
+        </Filter>
+        <Filter>
+          <Select
+          value={filters.sortBy}
+          onChange={onSortChange}
+          >
+            <option value='date'>Date</option>
+            <option value='amount'>Amount</option>
+          </Select>
+        </Filter>
+        <Filter>
+          <DateRangePicker
+            startDate={filters.startDate}
+            startDateId='start'
+            endDate={filters.endDate}
+            endDateId='end'
+            onDatesChange={onDatesChange}
+            focusedInput={focused}
+            onFocusChange={onFocusChange}
+            showClearDates={true}
+            numberOfMonths={1}
+            isOutsideRange={() => false}
+          />
+        </Filter>
+      </ListFilters>
+    </ContentContainer>
   );
 };
 

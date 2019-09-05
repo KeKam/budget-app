@@ -11,7 +11,12 @@ import PrivateRoute from './PrivateRoute';
 import PublicRoute from './PublicRoute';
 
 const GlobalStyle = createGlobalStyle`
+  * {
+    box-sizing: border-box;
+  }
+  
   body {
+    font-size: 1.6rem;
     margin: 0;
   }
 `
