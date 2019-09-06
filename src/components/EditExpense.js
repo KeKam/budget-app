@@ -1,7 +1,15 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import styled from 'styled-components';
 import ExpenseForm from './ExpenseForm';
 import { startEditExpense, startRemoveExpense } from '../actions/expenses';
+import { Header, HeaderText } from './ExpensesSummary';
+import { ContentContainer } from './Header';
+import { Button } from './Login';
+
+const RedButton = styled(Button)`
+  background: #bd2c00;
+`;
 
 const EditExpense = ({ expenseMatch, history, startEditExpense, startRemoveExpense }) => {
   const onSubmit = (expense) => {
@@ -16,15 +24,22 @@ const EditExpense = ({ expenseMatch, history, startEditExpense, startRemoveExpen
   
   return (
     <div>
-      <ExpenseForm
-        expense={expenseMatch}
-        onSubmit={onSubmit}
-      />
-      <button 
-        onClick={onRemove}
-        >
-        Remove
-      </button>
+      <Header>
+        <ContentContainer>
+          <HeaderText>Edit Expense</HeaderText>
+        </ContentContainer>
+      </Header>
+      <ContentContainer>
+        <ExpenseForm
+          expense={expenseMatch}
+          onSubmit={onSubmit}
+        />
+        <RedButton
+          onClick={onRemove}
+          >
+          Remove Expense
+        </RedButton>
+      </ContentContainer>
     </div>
   );
 };

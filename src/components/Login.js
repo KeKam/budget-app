@@ -27,7 +27,7 @@ const LoginPanelTitle = styled.h1`
   line-height: 1;
 `;
 
-const LoginPanelButton = styled.button`
+export const Button = styled.button`
   background: #4078c0;
   border: none;
   color: white;
@@ -43,7 +43,7 @@ const Login = ({ startLogin }) => {
       <LoginPanel>
         <LoginPanelTitle>Budgetify</LoginPanelTitle>
         <p>Get your budget under control.</p>
-        <LoginPanelButton onClick={startLogin}>Login with Google</LoginPanelButton>
+        <Button onClick={startLogin}>Login with Google</Button>
       </LoginPanel>
     </LoginScreen>
   );

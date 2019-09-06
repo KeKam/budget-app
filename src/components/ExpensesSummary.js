@@ -7,13 +7,13 @@ import getVisibleExpenses from '../selector/expenses';
 import totalExpenses from '../selector/expenses-total';
 import { ContentContainer } from './Header';
 
-const SummaryArea = styled.div`
+export const Header = styled.div`
   background: #f5f5f5;
   margin-bottom: 2rem;
   padding: 2rem 0;
 `;
 
-const SummaryText= styled.h1`
+export const HeaderText= styled.h1`
   font-weight: 300;
   margin: 0;
 
@@ -22,7 +22,7 @@ const SummaryText= styled.h1`
   }
 `;
 
-const SummaryNavigation = styled.div`
+const HeaderNav = styled.div`
   margin-top: 1.6rem;
 `;
 
@@ -42,14 +42,14 @@ const ExpensesSummary = ({ expenseCount, expensesTotal }) => {
   const expenseWord = expenseCount === 1 ? 'expense' : 'expenses';
   const formattedTotalValue = numeral(expensesTotal / 100).format('$0,0.00');
   return (
-    <SummaryArea>
+    <Header>
       <ContentContainer>
-        <SummaryText>Viewing <span>{expenseCount}</span> {expenseWord} totalling <span>{formattedTotalValue}</span> </SummaryText>
-        <SummaryNavigation>
+        <HeaderText>Viewing <span>{expenseCount}</span> {expenseWord} totalling <span>{formattedTotalValue}</span> </HeaderText>
+        <HeaderNav>
           <StyledLink to='/create'>Add Expense</StyledLink>
-        </SummaryNavigation>
+        </HeaderNav>
       </ContentContainer>
-    </SummaryArea>
+    </Header>
   );
 };
 
