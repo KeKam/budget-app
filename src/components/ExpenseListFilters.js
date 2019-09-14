@@ -32,7 +32,7 @@ export const TextInput = styled.input`
   padding: 1.2rem;
 `;
 
-const Select = styled(TextInput.withComponent('select'))`
+const Select = styled(TextInput)`
   padding: 0 1.2rem;
 `;
 
@@ -68,6 +68,7 @@ const ExpenseListFilters = ({ filters, setStartDate, setEndDate, setTextFilter, 
         </Filter>
         <Filter>
           <Select
+          as='select'
           value={filters.sortBy}
           onChange={onSortChange}
           >
