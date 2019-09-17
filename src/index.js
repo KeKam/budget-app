@@ -7,6 +7,7 @@ import { startSetExpenses } from './actions/expenses';
 import { login, logout } from './actions/auth';
 import * as serviceWorker from './serviceWorker';
 import { firebase } from './firebase/firebase';
+import Loading from './components/Loading';
 
 const store = configureStore();
 
@@ -25,7 +26,7 @@ const renderApp = () => {
   }
 };
 
-ReactDOM.render(<p>Loading...</p>, document.getElementById('root'));
+ReactDOM.render(<Loading />, document.getElementById('root'));
 
 firebase.auth().onAuthStateChanged(async (user) => {
   if (user) {
