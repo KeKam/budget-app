@@ -1,6 +1,6 @@
-const expensesReucerDefaultState = [];
+const expensesReducerDefaultState = [];
 
-const expensesReducer = (state = expensesReucerDefaultState, action) => {
+const expensesReducer = (state = expensesReducerDefaultState, action) => {
   switch (action.type) {
     case 'ADD_EXPENSE':
       return [

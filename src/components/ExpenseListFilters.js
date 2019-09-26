@@ -20,7 +20,7 @@ const Filter = styled.div`
   margin-bottom: 1.2rem;
   
   @media (min-width: 45rem) {
-    margin: 0 1.2rem 0 0
+    margin: 0 1.2rem 0 0;
   }
 `;
 
