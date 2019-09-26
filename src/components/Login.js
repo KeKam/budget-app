@@ -5,7 +5,7 @@ import { startLogin } from '../actions/auth';
 
 const LoginScreen = styled.div`
   align-items: center;
-  background: url('/images/houses.jpg');
+  background-image: linear-gradient(to bottom, rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('/images/houses.jpg');
   background-size: cover;
   display: flex;
   justify-content: center;
@@ -18,7 +18,7 @@ const LoginPanel = styled.div`
   border-radius: 10px;
   padding: 3.2rem 1.6rem;
   text-align: center;
-  width: 15rem;
+  width: 25rem;
   opacity: 0.9;
 `;
 
