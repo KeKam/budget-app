@@ -95,30 +95,45 @@ const ExpenseListFilters = ({ filters, setStartDate, setEndDate, setTextFilter, 
   );
 };
 
-const mapStateToProps = ({ filters }) => {
-  return {
-    filters
-  };
-};
+// const mapStateToProps = ({ filters }) => {
+//   return {
+//     filters
+//   };
+// };
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    setStartDate: (startDate) => {
-      return dispatch(setStartDate(startDate));
-    },
-    setEndDate: (endDate) => {
-      return dispatch(setEndDate(endDate));
-    },
-    setTextFilter: (text) => {
-      return dispatch(setTextFilter(text));
-    },
-    sortByDate: () => {
-      return dispatch(sortByDate());
-    },
-    sortByAmount: () => {
-      return dispatch(sortByAmount());
+// const mapDispatchToProps = (dispatch) => {
+//   return {
+//     setStartDate: (startDate) => {
+//       return dispatch(setStartDate(startDate));
+//     },
+//     setEndDate: (endDate) => {
+//       return dispatch(setEndDate(endDate));
+//     },
+//     setTextFilter: (text) => {
+//       return dispatch(setTextFilter(text));
+//     },
+//     sortByDate: () => {
+//       return dispatch(sortByDate());
+//     },
+//     sortByAmount: () => {
+//       return dispatch(sortByAmount());
+//     }
+//   };
+// };
+
+//export default connect(mapStateToProps, mapDispatchToProps)(ExpenseListFilters);
+
+export default connect(
+  (state) => {
+    return {
+      filters: state.filters,
     }
-  };
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(ExpenseListFilters);
+  },
+  {
+    setStartDate,
+    setEndDate,
+    setTextFilter,
+    sortByDate,
+    sortByAmount,
+  }
+)(ExpenseListFilters);

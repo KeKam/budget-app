@@ -77,39 +77,39 @@ const ExpenseForm = ({ onSubmit, expense }) => {
   };
 
   return (
-      <Form onSubmit={onFormSubmit}>
-        {error && <ErrorText>{error}</ErrorText>}
-        <TextInput 
-          type='text' 
-          placeholder='Description'
-          value={description} 
-          onChange={onDescriptionChange}
-          autoFocus 
-        />
-        <TextInput 
-          type='text' 
-          placeholder='Amount' 
-          value={amount}
-          onChange={onAmountChange}
-        />
-        <SingleDatePicker
-          date={createdAt}
-          onDateChange={onDateChange}
-          focused={focused}
-          onFocusChange={onFocusChange}
-          isOutsideRange={() => false}
-          numberOfMonths={1}
-        />
-        <Textarea
-          as='textarea'
-          placeholder='Add a note for your expense (optional)' 
-          value={note}
-          onChange={onNoteChange}
-        />
-        <div>
-          <Button>Save Expense</Button>
-        </div>
-      </Form>
+    <Form onSubmit={onFormSubmit}>
+      {error && <ErrorText>{error}</ErrorText>}
+      <TextInput 
+        type='text' 
+        placeholder='Description'
+        value={description} 
+        onChange={onDescriptionChange}
+        autoFocus 
+      />
+      <TextInput 
+        type='text' 
+        placeholder='Amount' 
+        value={amount}
+        onChange={onAmountChange}
+      />
+      <SingleDatePicker
+        date={createdAt}
+        onDateChange={onDateChange}
+        focused={focused}
+        onFocusChange={onFocusChange}
+        isOutsideRange={() => false}
+        numberOfMonths={1}
+      />
+      <Textarea
+        as='textarea'
+        placeholder='Add a note for your expense (optional)' 
+        value={note}
+        onChange={onNoteChange}
+      />
+      <div>
+        <Button>Save Expense</Button>
+      </div>
+    </Form>
   );
 };
 

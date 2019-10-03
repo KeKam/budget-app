@@ -57,12 +57,9 @@ const Header = ({ startLogout }) => {
   );
 };
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    startLogout: () => {
-      return dispatch(startLogout());
-    }
-  };
-};
-
-export default connect(undefined, mapDispatchToProps)(Header);
+export default connect(
+  undefined, 
+  {
+    startLogout,
+  }
+)(Header);

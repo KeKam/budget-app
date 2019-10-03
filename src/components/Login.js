@@ -49,12 +49,9 @@ const Login = ({ startLogin }) => {
   );
 };
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    startLogin: () => {
-      return dispatch(startLogin());
-    }
-  };
-};
-
-export default connect(undefined, mapDispatchToProps)(Login);
+export default connect(
+  undefined,
+  {
+    startLogin,
+  }
+)(Login);

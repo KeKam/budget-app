@@ -27,12 +27,9 @@ const AddExpense = ({ history, startAddExpense }) => {
   );
 };
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    startAddExpense: (expense) => {
-      return dispatch(startAddExpense(expense));
-    }
-  };
-};
-
-export default connect(undefined, mapDispatchToProps)(AddExpense);
+export default connect(
+  undefined, 
+  {
+    startAddExpense,
+  }
+)(AddExpense);

@@ -53,13 +53,12 @@ const ExpensesSummary = ({ expenseCount, expensesTotal }) => {
   );
 };
 
-const mapStateToProps = ({ expenses, filters }) => {
-  const visibleExpenses = getVisibleExpenses(expenses, filters);
-
-  return {
-    expenseCount: visibleExpenses.length,
-    expensesTotal: totalExpenses(visibleExpenses)
-  };
-};
-
-export default connect(mapStateToProps)(ExpensesSummary);
+export default connect(
+  (state) => {
+    const visibleExpenses = getVisibleExpenses(state.expenses, state.filters);
+    return {
+      expenseCount: visibleExpenses.length,
+      expensesTotal: totalExpenses(visibleExpenses),
+    }
+  }
+)(ExpensesSummary);

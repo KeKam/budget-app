@@ -76,10 +76,10 @@ const ExpenseList = ({ expenses }) => {
   );
 };
 
-const mapStateToProps = ({ expenses, filters }) => {
-  return {
-    expenses: getVisibleExpenses(expenses, filters)
-  };
-};
-
-export default connect(mapStateToProps)(ExpenseList);
+export default connect(
+  (state) => {
+    return {
+      expenses: getVisibleExpenses(state.expenses, state.filters),
+    }
+  }
+)(ExpenseList);
