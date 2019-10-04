@@ -1,29 +1,9 @@
 import React, { useState } from 'react';
 import moment from 'moment';
 import { SingleDatePicker } from 'react-dates';
-import styled from 'styled-components';
+import { ExpenseForm as S } from './ExpenseForm.styled';
 import 'react-dates/initialize';
 import 'react-dates/lib/css/_datepicker.css';
-import { TextInput } from './ExpenseListFilters';
-import { Button } from './Login';
-
-const Form = styled.form`
-  display: flex;
-  flex-direction: column;
-  
-  > * {
-    margin-bottom: 1.6rem;
-  }
-`;
-
-const ErrorText = styled.p`
-  margin: 0 0 1.6rem 0;
-  font-style: italic;
-`;
-
-const Textarea = styled(TextInput)`
-  height: 10rem;
-`;
 
 const ExpenseForm = ({ onSubmit, expense }) => {
   const [ description, setDescription ] = useState(expense ? expense.description : '');
@@ -77,16 +57,16 @@ const ExpenseForm = ({ onSubmit, expense }) => {
   };
 
   return (
-    <Form onSubmit={onFormSubmit}>
-      {error && <ErrorText>{error}</ErrorText>}
-      <TextInput 
+    <S.Form onSubmit={onFormSubmit}>
+      {error && <S.Error>{error}</S.Error>}
+      <S.Input
         type='text' 
         placeholder='Description'
         value={description} 
         onChange={onDescriptionChange}
         autoFocus 
       />
-      <TextInput 
+      <S.Input
         type='text' 
         placeholder='Amount' 
         value={amount}
@@ -100,16 +80,16 @@ const ExpenseForm = ({ onSubmit, expense }) => {
         isOutsideRange={() => false}
         numberOfMonths={1}
       />
-      <Textarea
+      <S.Textarea
         as='textarea'
         placeholder='Add a note for your expense (optional)' 
         value={note}
         onChange={onNoteChange}
       />
       <div>
-        <Button>Save Expense</Button>
+        <S.Button>Save Expense</S.Button>
       </div>
-    </Form>
+    </S.Form>
   );
 };
 
