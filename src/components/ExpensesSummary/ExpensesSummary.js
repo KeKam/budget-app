@@ -3,12 +3,13 @@ import { connect } from 'react-redux';
 import numeral from 'numeral';
 import getVisibleExpenses from '../../selector/expenses';
 import totalExpenses from '../../selector/expenses-total';
+import { formatCurrencyType, formatCurrencyValue } from '../../selector/formatCurrency';
 import { SharedStyles as SS } from '../SharedStyles/SharedStyles';
 import { ExpensesSummary as S } from './ExpensesSummary.styled';
 
-const ExpensesSummary = ({ expenseCount, expensesTotal }) => {
+const ExpensesSummary = ({ expenseCount, expensesTotal, filters }) => {
   const expenseWord = expenseCount === 1 ? 'expense' : 'expenses';
-  const formattedTotalValue = numeral(expensesTotal / 100).format('$0,0.00');
+  const formattedTotalValue = numeral((expensesTotal / 100) * formatCurrencyValue(filters)).format(formatCurrencyType(filters));
   return (
     <S.Wrapper>
       <SS.ContentContainer>
@@ -27,6 +28,7 @@ export default connect(
     return {
       expenseCount: visibleExpenses.length,
       expensesTotal: totalExpenses(visibleExpenses),
+      filters: state.filters,
     }
   }
 )(ExpensesSummary);

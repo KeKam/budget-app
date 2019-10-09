@@ -4,7 +4,8 @@ const filtersReducerDefaultState = {
   text: '',
   sortBy: 'date',
   startDate: moment().startOf('month'),
-  endDate: moment().endOf('month')
+  endDate: moment().endOf('month'),
+  currencyType: 'euro',
 };
 
 const filtersReducer = (state = filtersReducerDefaultState, action) => {
@@ -33,6 +34,26 @@ const filtersReducer = (state = filtersReducerDefaultState, action) => {
       return {
         ...state,
         endDate: action.endDate
+      };
+    case 'SET_CURRENCY_EURO':
+      return {
+        ...state,
+        currencyType: 'euro'
+      };
+    case 'SET_CURRENCY_SEK':
+      return {
+        ...state,
+        currencyType: 'sek'
+      };
+    case 'SET_CURRENCY_DOLLAR':
+      return {
+        ...state,
+        currencyType: 'dollar'
+      };
+    case 'SET_CURRENCY_RATES':
+      return {
+        ...state,
+        currencyRates: action.currencyData
       };
     default:
       return state;

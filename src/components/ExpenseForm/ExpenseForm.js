@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
+import { connect } from 'react-redux';
 import moment from 'moment';
 import { SingleDatePicker } from 'react-dates';
 import { ExpenseForm as S } from './ExpenseForm.styled';
+import { formatCurrencyValue } from '../../selector/formatCurrency';
 import 'react-dates/initialize';
 import 'react-dates/lib/css/_datepicker.css';
 
-const ExpenseForm = ({ onSubmit, expense }) => {
+const ExpenseForm = ({ onSubmit, expense, filters }) => {
   const [ description, setDescription ] = useState(expense ? expense.description : '');
   const [ note, setNote ] = useState(expense ? expense.note : '');
   const [ amount, setAmount ] = useState(expense ? (expense.amount / 100).toString() : '');
@@ -27,6 +29,7 @@ const ExpenseForm = ({ onSubmit, expense }) => {
     const amount = e.target.value;
     if (!amount || amount.match(/^\d{1,}(\.\d{0,2})?$/)) {
       setAmount(amount);
+      console.log(amount);
     }
   };
 
@@ -42,14 +45,13 @@ const ExpenseForm = ({ onSubmit, expense }) => {
 
   const onFormSubmit = (e) => {
     e.preventDefault();
-
     if (!description || !amount) {
       setError('Please provide description and amount');
     } else {
       setError('');
       onSubmit({
         description,
-        amount: parseFloat(amount, 10) * 100,
+        amount: (parseFloat(amount, 10) * 100) / formatCurrencyValue(filters),
         createdAt: createdAt.valueOf(),
         note
       });
@@ -93,4 +95,10 @@ const ExpenseForm = ({ onSubmit, expense }) => {
   );
 };
 
-export default ExpenseForm;
+export default connect(
+  (state) => {
+    return {
+      filters: state.filters,
+    }
+  }
+)(ExpenseForm);

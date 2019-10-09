@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { DateRangePicker } from 'react-dates';
-import { setTextFilter, sortByDate, sortByAmount, setStartDate, setEndDate } from '../../actions/filters';
+import '../../locales/locales';
+import { setTextFilter, sortByDate, sortByAmount, setStartDate, setEndDate, setCurrencyEuro, setCurrencySek, setCurrencyDollar } from '../../actions/filters';
 import { SharedStyles as SS } from '../SharedStyles/SharedStyles';
 import { ExpenseListFilters as S } from './ExpenseListFilters.styled';
 
-const ExpenseListFilters = ({ filters, setStartDate, setEndDate, setTextFilter, sortByDate, sortByAmount }) => {
+const ExpenseListFilters = ({ filters, setStartDate, setEndDate, setTextFilter, sortByDate, sortByAmount, setCurrencyEuro, setCurrencySek, setCurrencyDollar }) => {
   const [ focused, setFocused ] = useState(null);
 
   const onDatesChange = ({ startDate, endDate }) => {
@@ -26,6 +27,16 @@ const ExpenseListFilters = ({ filters, setStartDate, setEndDate, setTextFilter, 
       sortByDate();
     } else if (e.target.value === 'amount') {
       sortByAmount();
+    }
+  };
+
+  const onCurrencyChange = (e) => {
+    if (e.target.value === 'euro') {
+      setCurrencyEuro();
+    } else if (e.target.value === 'sek') {
+      setCurrencySek();
+    } else if (e.target.value === 'dollar') {
+      setCurrencyDollar();
     }
   };
 
@@ -58,6 +69,16 @@ const ExpenseListFilters = ({ filters, setStartDate, setEndDate, setTextFilter, 
             isOutsideRange={() => false}
           />
         </S.Filter>
+        <S.Filter>
+          <S.Select
+          value={filters.currencyType}
+          onChange={onCurrencyChange}
+          >
+            <option value='euro'>Euro (€)</option>
+            <option value='sek'>Sek (kr)</option>
+            <option value='dollar'>Dollar ($)</option>
+          </S.Select>
+        </S.Filter>
       </S.Filters>
     </SS.ContentContainer>
   );
@@ -75,5 +96,8 @@ export default connect(
     setTextFilter,
     sortByDate,
     sortByAmount,
+    setCurrencyEuro,
+    setCurrencySek,
+    setCurrencyDollar,
   }
 )(ExpenseListFilters);
