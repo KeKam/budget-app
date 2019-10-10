@@ -24,15 +24,26 @@ ExpenseListFilters.Filter = styled.div`
 ExpenseListFilters.Input = styled.input`
   border: 1px solid #cacccd;
   height: 50px;
-  font-size: 1.8rem;
+  font-size: 1.5rem;
   font-weight: 300;
   padding: 1.2rem;
+  width: 80%;
+
+  @media (min-width: 45rem) {
+    font-size: 1.8rem;
+    width: 100%;
+  }
 `;
 
 ExpenseListFilters.Select = styled.select`
   border: 1px solid #cacccd;
   height: 50px;
-  font-size: 1.8rem;
+  font-size: 1.5rem;
   font-weight: 300;
   padding: 0 1.2rem;
+
+  @media (min-width: 45rem) {
+    font-size: 1.8rem;
+    width: 100%;
+  }
 `;

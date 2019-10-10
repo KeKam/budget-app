@@ -20,9 +20,14 @@ Header.Link = styled(Link)`
 `;
 
 Header.Title = styled.h1`
+  font-size: 2rem;
   color: white;
   text-decoration: none;
   margin: 0;
+
+  @media (min-width: 45rem) {
+    font-size: 3rem;
+  }
 `;
 
 Header.Button = styled.button`

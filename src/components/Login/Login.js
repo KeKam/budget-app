@@ -8,7 +8,7 @@ const Login = ({ startLogin }) => {
     <S.Wrapper>
       <S.Panel>
         <S.Title>Budgetify</S.Title>
-        <p>Get your budget under control.</p>
+        <S.Text>Get your budget under control.</S.Text>
         <S.Button onClick={startLogin}>Login with Google</S.Button>
       </S.Panel>
     </S.Wrapper>

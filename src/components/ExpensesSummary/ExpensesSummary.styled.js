@@ -10,11 +10,16 @@ ExpensesSummary.Wrapper = styled.div`
 `;
 
 ExpensesSummary.Text = styled.h1`
+  font-size: 2rem;
   font-weight: 300;
   margin: 0;
 
   span {
     font-weight: 700;
+  }
+
+  @media (min-width: 45rem) {
+    font-size: 3rem;
   }
 `;
 
