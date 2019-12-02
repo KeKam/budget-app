@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import moment from 'moment';
 import numeral from 'numeral';
-import { formatCurrencyType, formatCurrencyValue } from '../../selector/formatCurrency';
+import { formatCurrencyType, formatCurrencyValue } from '../../utils/formatCurrency';
 import { ExpenseItem as S } from './ExpenseItem.styled';
 
 const ExpenseItem = ({ description, amount, createdAt, id , filters }) => { 

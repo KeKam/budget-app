@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import numeral from 'numeral';
 import getVisibleExpenses from '../../selector/expenses';
 import totalExpenses from '../../selector/expenses-total';
-import { formatCurrencyType, formatCurrencyValue } from '../../selector/formatCurrency';
+import { formatCurrencyType, formatCurrencyValue } from '../../utils/formatCurrency';
 import { SharedStyles as SS } from '../SharedStyles/SharedStyles';
 import { ExpensesSummary as S } from './ExpensesSummary.styled';
 

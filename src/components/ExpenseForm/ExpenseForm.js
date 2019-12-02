@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import moment from 'moment';
 import { SingleDatePicker } from 'react-dates';
 import { ExpenseForm as S } from './ExpenseForm.styled';
-import { formatCurrencyValue } from '../../selector/formatCurrency';
+import { formatCurrencyValue } from '../../utils/formatCurrency';
 import 'react-dates/initialize';
 import 'react-dates/lib/css/_datepicker.css';
 
