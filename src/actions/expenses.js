@@ -1,6 +1,6 @@
 import database from '../firebase/firebase';
 
-export const addExpense = (expense) => ({
+export const addExpense = expense => ({
   type: 'ADD_EXPENSE',
   expense
 });
@@ -16,18 +16,22 @@ export const startAddExpense = (expenseData = {}) => {
     } = expenseData;
     const expense = { description, note, amount, createdAt };
     try {
-      const response = await database.ref(`users/${uid}/expenses`).push(expense);
-      dispatch(addExpense({
-        id: response.ref.key,
-        ...expense
-      }));
+      const response = await database
+        .ref(`users/${uid}/expenses`)
+        .push(expense);
+      dispatch(
+        addExpense({
+          id: response.ref.key,
+          ...expense
+        })
+      );
     } catch (error) {
       console.log('Failed to save data to database', error);
     }
   };
 };
 
-export const removeExpense = ({ id }) =>({
+export const removeExpense = ({ id }) => ({
   type: 'REMOVE_EXPENSE',
   id
 });
@@ -62,7 +66,7 @@ export const startEditExpense = (id, updates) => {
   };
 };
 
-export const setExpenses = (expenses) => ({
+export const setExpenses = expenses => ({
   type: 'SET_EXPENSES',
   expenses
 });
@@ -71,9 +75,11 @@ export const startSetExpenses = () => {
   return async (dispatch, getState) => {
     const uid = getState().auth.uid;
     try {
-      const response = await database.ref(`users/${uid}/expenses`).once('value');
+      const response = await database
+        .ref(`users/${uid}/expenses`)
+        .once('value');
       const expenses = [];
-      response.forEach((expense) => {
+      response.forEach(expense => {
         expenses.push({
           id: expense.key,
           ...expense.val()

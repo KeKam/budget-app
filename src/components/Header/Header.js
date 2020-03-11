@@ -19,9 +19,6 @@ const Header = ({ startLogout }) => {
   );
 };
 
-export default connect(
-  undefined, 
-  {
-    startLogout,
-  }
-)(Header);
+export default connect(undefined, {
+  startLogout
+})(Header);

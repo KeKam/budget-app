@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, { useEffect } from 'react';
 import { Router, Route, Switch } from 'react-router-dom';
 import { createBrowserHistory } from 'history';
 import { createGlobalStyle } from 'styled-components';
@@ -26,7 +26,6 @@ const GlobalStyle = createGlobalStyle`
 export const history = createBrowserHistory();
 
 const AppRouter = ({ fetchCurrencyRates }) => {
-  
   useEffect(() => {
     fetchCurrencyRates();
   });
@@ -47,9 +46,6 @@ const AppRouter = ({ fetchCurrencyRates }) => {
   );
 };
 
-export default connect(
-  undefined, 
-  {
-    fetchCurrencyRates,
-  }
-)(AppRouter);
+export default connect(undefined, {
+  fetchCurrencyRates
+})(AppRouter);

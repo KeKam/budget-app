@@ -5,7 +5,7 @@ export const ExpenseForm = () => {};
 ExpenseForm.Form = styled.form`
   display: flex;
   flex-direction: column;
-  
+
   > * {
     margin-bottom: 1.6rem;
   }

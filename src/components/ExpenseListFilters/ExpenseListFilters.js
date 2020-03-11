@@ -2,27 +2,46 @@ import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { DateRangePicker } from 'react-dates';
 import '../../locales/locales';
-import { setTextFilter, sortByDate, sortByAmount, setStartDate, setEndDate, setCurrencyEuro, setCurrencySek, setCurrencyDollar } from '../../actions/filters';
+import {
+  setTextFilter,
+  sortByDate,
+  sortByAmount,
+  setStartDate,
+  setEndDate,
+  setCurrencyEuro,
+  setCurrencySek,
+  setCurrencyDollar
+} from '../../actions/filters';
 import { SharedStyles as SS } from '../SharedStyles/SharedStyles';
 import { ExpenseListFilters as S } from './ExpenseListFilters.styled';
 
-const ExpenseListFilters = ({ filters, setStartDate, setEndDate, setTextFilter, sortByDate, sortByAmount, setCurrencyEuro, setCurrencySek, setCurrencyDollar }) => {
-  const [ focused, setFocused ] = useState(null);
+const ExpenseListFilters = ({
+  filters,
+  setStartDate,
+  setEndDate,
+  setTextFilter,
+  sortByDate,
+  sortByAmount,
+  setCurrencyEuro,
+  setCurrencySek,
+  setCurrencyDollar
+}) => {
+  const [focused, setFocused] = useState(null);
 
   const onDatesChange = ({ startDate, endDate }) => {
     setStartDate(startDate);
     setEndDate(endDate);
   };
 
-  const onFocusChange = (focused) => {
+  const onFocusChange = focused => {
     setFocused(focused);
   };
 
-  const onInputChange = (e) => {
+  const onInputChange = e => {
     setTextFilter(e.target.value);
   };
 
-  const onSortChange = (e) => {
+  const onSortChange = e => {
     if (e.target.value === 'date') {
       sortByDate();
     } else if (e.target.value === 'amount') {
@@ -30,7 +49,7 @@ const ExpenseListFilters = ({ filters, setStartDate, setEndDate, setTextFilter, 
     }
   };
 
-  const onCurrencyChange = (e) => {
+  const onCurrencyChange = e => {
     if (e.target.value === 'euro') {
       setCurrencyEuro();
     } else if (e.target.value === 'sek') {
@@ -44,13 +63,15 @@ const ExpenseListFilters = ({ filters, setStartDate, setEndDate, setTextFilter, 
     <SS.ContentContainer>
       <S.Filters>
         <S.Filter>
-          <S.Input type='text' placeholder='Search expenses' value={filters.text} onChange={onInputChange} />
+          <S.Input
+            type='text'
+            placeholder='Search expenses'
+            value={filters.text}
+            onChange={onInputChange}
+          />
         </S.Filter>
         <S.Filter>
-          <S.Select
-          value={filters.sortBy}
-          onChange={onSortChange}
-          >
+          <S.Select value={filters.sortBy} onChange={onSortChange}>
             <option value='date'>Date</option>
             <option value='amount'>Amount</option>
           </S.Select>
@@ -70,10 +91,7 @@ const ExpenseListFilters = ({ filters, setStartDate, setEndDate, setTextFilter, 
           />
         </S.Filter>
         <S.Filter>
-          <S.Select
-          value={filters.currencyType}
-          onChange={onCurrencyChange}
-          >
+          <S.Select value={filters.currencyType} onChange={onCurrencyChange}>
             <option value='euro'>Euro (€)</option>
             <option value='sek'>Sek (kr)</option>
             <option value='dollar'>Dollar ($)</option>
@@ -85,10 +103,10 @@ const ExpenseListFilters = ({ filters, setStartDate, setEndDate, setTextFilter, 
 };
 
 export default connect(
-  (state) => {
+  state => {
     return {
-      filters: state.filters,
-    }
+      filters: state.filters
+    };
   },
   {
     setStartDate,
@@ -98,6 +116,6 @@ export default connect(
     sortByAmount,
     setCurrencyEuro,
     setCurrencySek,
-    setCurrencyDollar,
+    setCurrencyDollar
   }
 )(ExpenseListFilters);

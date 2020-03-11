@@ -5,8 +5,13 @@ import { startEditExpense, startRemoveExpense } from '../../actions/expenses';
 import { SharedStyles as SS } from '../SharedStyles/SharedStyles';
 import { EditExpense as S } from './EditExpense.styled';
 
-const EditExpense = ({ expenseMatch, history, startEditExpense, startRemoveExpense }) => {
-  const onSubmit = (expense) => {
+const EditExpense = ({
+  expenseMatch,
+  history,
+  startEditExpense,
+  startRemoveExpense
+}) => {
+  const onSubmit = expense => {
     startEditExpense(expenseMatch.id, expense);
     history.push('/');
   };
@@ -15,7 +20,7 @@ const EditExpense = ({ expenseMatch, history, startEditExpense, startRemoveExpen
     startRemoveExpense({ id: expenseMatch.id });
     history.push('/');
   };
-  
+
   return (
     <div>
       <S.Header>
@@ -24,15 +29,8 @@ const EditExpense = ({ expenseMatch, history, startEditExpense, startRemoveExpen
         </SS.ContentContainer>
       </S.Header>
       <SS.ContentContainer>
-        <ExpenseForm
-          expense={expenseMatch}
-          onSubmit={onSubmit}
-        />
-        <S.Button
-          onClick={onRemove}
-          >
-          Remove Expense
-        </S.Button>
+        <ExpenseForm expense={expenseMatch} onSubmit={onSubmit} />
+        <S.Button onClick={onRemove}>Remove Expense</S.Button>
       </SS.ContentContainer>
     </div>
   );
@@ -41,13 +39,13 @@ const EditExpense = ({ expenseMatch, history, startEditExpense, startRemoveExpen
 export default connect(
   (state, props) => {
     return {
-      expenseMatch: state.expenses.find((expense) => {
+      expenseMatch: state.expenses.find(expense => {
         return expense.id === props.match.params.id;
-      }),
-    }
+      })
+    };
   },
   {
     startEditExpense,
-    startRemoveExpense,
+    startRemoveExpense
   }
 )(EditExpense);

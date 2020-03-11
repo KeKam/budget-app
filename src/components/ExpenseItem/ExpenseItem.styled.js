@@ -12,7 +12,7 @@ ExpenseItem.Link = styled(Link)`
   padding: 1.2rem;
   text-decoration: none;
   transition: background 0.3s ease;
-  
+
   &:hover {
     background: #f5f5f5;
   }

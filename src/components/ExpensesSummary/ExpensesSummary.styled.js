@@ -38,4 +38,3 @@ ExpensesSummary.Link = styled(Link)`
   text-decoration: none;
   line-height: 1;
 `;
-

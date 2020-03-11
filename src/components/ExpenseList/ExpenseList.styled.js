@@ -45,6 +45,6 @@ ExpenseList.List = styled.div`
   margin-bottom: 1.6rem;
 
   @media (min-width: 45rem) {
-    margin-bottom: 3.2rem
+    margin-bottom: 3.2rem;
   }
 `;

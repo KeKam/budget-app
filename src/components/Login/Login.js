@@ -15,9 +15,6 @@ const Login = ({ startLogin }) => {
   );
 };
 
-export default connect(
-  undefined,
-  {
-    startLogin,
-  }
-)(Login);
+export default connect(undefined, {
+  startLogin
+})(Login);

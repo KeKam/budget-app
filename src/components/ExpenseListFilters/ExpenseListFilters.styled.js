@@ -6,7 +6,7 @@ ExpenseListFilters.Filters = styled.div`
   display: flex;
   flex-direction: column;
   margin-bottom: 1.6rem;
-  
+
   @media (min-width: 45rem) {
     flex-direction: row;
     margin-bottom: 3.2rem;

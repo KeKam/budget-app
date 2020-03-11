@@ -4,7 +4,12 @@ export const Login = () => {};
 
 Login.Wrapper = styled.div`
   align-items: center;
-  background-image: linear-gradient(to bottom, rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('/images/houses.jpg');
+  background-image: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0.7),
+      rgba(0, 0, 0, 0.7)
+    ),
+    url('/images/houses.jpg');
   background-size: cover;
   display: flex;
   justify-content: center;
@@ -19,7 +24,7 @@ Login.Panel = styled.div`
   text-align: center;
   width: 15rem;
   opacity: 0.9;
-  
+
   @media (min-width: 45rem) {
     width: 25rem;
     padding: 3.2rem 1.6rem;

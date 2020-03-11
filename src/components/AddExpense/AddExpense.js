@@ -6,11 +6,11 @@ import { SharedStyles as SS } from '../SharedStyles/SharedStyles';
 import { AddExpense as S } from './AddExpense.styled';
 
 const AddExpense = ({ history, startAddExpense }) => {
-  const onSubmit = (expense) => {
+  const onSubmit = expense => {
     startAddExpense(expense);
     history.push('/');
   };
-  
+
   return (
     <div>
       <S.Header>
@@ -19,17 +19,12 @@ const AddExpense = ({ history, startAddExpense }) => {
         </SS.ContentContainer>
       </S.Header>
       <SS.ContentContainer>
-        <ExpenseForm 
-          onSubmit={onSubmit}   
-        />
+        <ExpenseForm onSubmit={onSubmit} />
       </SS.ContentContainer>
     </div>
   );
 };
 
-export default connect(
-  undefined, 
-  {
-    startAddExpense,
-  }
-)(AddExpense);
+export default connect(undefined, {
+  startAddExpense
+})(AddExpense);

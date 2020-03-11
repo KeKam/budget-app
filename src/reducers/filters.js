@@ -5,7 +5,7 @@ const filtersReducerDefaultState = {
   sortBy: 'date',
   startDate: moment().startOf('month'),
   endDate: moment().endOf('month'),
-  currencyType: 'euro',
+  currencyType: 'euro'
 };
 
 const filtersReducer = (state = filtersReducerDefaultState, action) => {
@@ -14,7 +14,7 @@ const filtersReducer = (state = filtersReducerDefaultState, action) => {
       return {
         ...state,
         text: action.text
-      }
+      };
     case 'SORT_BY_AMOUNT':
       return {
         ...state,
